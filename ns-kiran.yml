@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2023-08-28T18:06:52Z"
+  labels:
+    kubernetes.io/metadata.name: kiran
+  name: kiran
+  resourceVersion: "22197"
+  uid: 7dc1f3f1-042d-44b6-8a4a-ea90476ae654
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

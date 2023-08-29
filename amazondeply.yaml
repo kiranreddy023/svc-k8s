@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: "2023-08-28T18:07:45Z"
+  generation: 1
+  labels:
+    app: amazondeploy
+  name: amazondeploy
+  namespace: kiran
+  resourceVersion: "22242"
+  uid: b263be07-c4f6-48c5-8836-73b25e7906b6
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 5
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: amazondeploy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: amazondeploy
+    spec:
+      containers:
+      - image: kiran023/amazon:v1
+        imagePullPolicy: IfNotPresent
+        name: amazon
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}
